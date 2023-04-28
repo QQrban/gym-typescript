@@ -13,11 +13,10 @@ const Link = ({
     setSelectedPage,
 }: Props) => {
     const lowerCasePage = page.toLowerCase().replace(/ /g, "") as SelectedPage;
-    const linksStyle = "text-sm uppercase font-bold tracking-widest";
 
     return (
         <AnchorLink
-            className={`${selectedPage === lowerCasePage ? `${linksStyle} text-gray-400` : linksStyle}`}
+            className={`${selectedPage === lowerCasePage ? ` text-gray-400` : ''}`}
             href={`#${lowerCasePage}`}
             onClick={() => setSelectedPage(lowerCasePage)}
         >

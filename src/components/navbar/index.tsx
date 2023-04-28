@@ -7,29 +7,32 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import ActionButton from "@/shared/ActionButton";
 
 type Props = {
+    isTop: boolean,
     selectedPage: SelectedPage;
     setSelectedPage: (value: SelectedPage) => void
 };
 
-const NavBar = ({ selectedPage, setSelectedPage }: Props) => {
+const NavBar = ({ isTop, selectedPage, setSelectedPage }: Props) => {
     const [isToggled, setIsToggled] = useState<boolean>(false);
 
     const flexBetween = "flex items-center justify-between";
     const isAboveMedium = useMediaQuery("(min-width: 1060px)");
 
+    const navBg = isTop ? "" : "bg-purple-800 drop-shadow"
+
     return (
         <nav>
-            <div className={`${flexBetween} fixed top-0 z-30 w-full py-6`}>
+            <div className={`${navBg} ${flexBetween} fixed top-0 z-30 w-full py-1`}>
                 <div className={`${flexBetween} mx-auto w-5/6`}>
                     <div className={`${flexBetween} w-full gap-16`}>
                         <div>
-                            <img style={{ width: 110 }} src={logo} alt="logo" />
-                            <div className="fz-2 text-lg font-bold">BodyRevolution</div>
+                            <img style={{ width: 80, margin: '0 auto' }} src={logo} alt="logo" />
+                            <div className="text-md font-bold">BodyRevolution</div>
                         </div>
 
                         {isAboveMedium ?
                             (<div className={`${flexBetween} w-full`}>
-                                <div className={`${flexBetween} gap-8 text-sm`}>
+                                <div className={`${flexBetween} gap-8 uppercase font-bold tracking-wides`}>
                                     <Link
                                         page="Home"
                                         selectedPage={selectedPage}
@@ -67,6 +70,39 @@ const NavBar = ({ selectedPage, setSelectedPage }: Props) => {
                     </div>
                 </div>
             </div>
+
+            {!isAboveMedium && isToggled && (
+                <div className="fixed right-0 bottom-0 z-40 h-full w-[300px] bg-purple-600 drop-shadow-xl transition-all">
+                    <div className="flex justify-end p-12">
+                        <button onClick={() => setIsToggled(!isToggled)}>
+                            <XMarkIcon className="h-8 w-8" />
+                        </button>
+                    </div>
+                    <div className="flex flex-col uppercase font-bold items-center gap-3 text-3xl">
+                        <Link
+                            page="Home"
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                        />
+
+                        <Link
+                            page="Benefits"
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                        />
+                        <Link
+                            page="Our Classes"
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                        />
+                        <Link
+                            page="Contact"
+                            selectedPage={selectedPage}
+                            setSelectedPage={setSelectedPage}
+                        />
+                    </div>
+                </div>
+            )}
         </nav>
     );
 };
