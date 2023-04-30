@@ -78,7 +78,7 @@ const Home = ({ setSelectedPage }: Props) => {
                         <img src={bgcircle} alt="background-element" />
                     </div>
                     <div className="z-10 relative">
-                        <img className="brightness-[95%] w-64 sm:w-72 md:w-80" src={bear} alt="people" />
+                        <img className="brightness-[95%] w-64 sm:w-72 md:w-80" src={bear} alt="bear" />
                     </div>
                 </div>
                 <div className="absolute rotate-180 brightness-200">

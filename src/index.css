@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,4 +18,17 @@ body,
   background-blend-mode: multiply;
   background-attachment: fixed;
   @apply text-white;
+}
+
+#gallery {
+  background: url(assets/gallery-bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(51, 51, 51);
+  background-blend-mode: multiply;
+}
+
+.slick-dots li button:before {
+  color: White !important;
 }

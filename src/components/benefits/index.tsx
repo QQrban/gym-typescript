@@ -4,8 +4,9 @@ import { GiBeastEye, GiPlantsAndAnimals } from "react-icons/gi"
 import { SiOpenaigym } from "react-icons/si"
 import { motion } from "framer-motion";
 import Benefit from "./Benefit";
-import rhino from "@/assets/rhino.png"
+import dog from "@/assets/dog.png"
 import bgcircle from "@/assets/bg-circle-ben.png"
+import ActionButton from "@/shared/ActionButton";
 
 type Props = {
     setSelectedPage: (value: SelectedPage) => void
@@ -77,16 +78,34 @@ const Benefits = ({ setSelectedPage }: Props) => {
                         />
                     ))}
                 </motion.div>
-                <div className="mt-10">
-                    <div className=" md:w-96 mx-auto relative">
-                        <img className="absolute opacity-60 w-80 left-1/2 -translate-x-1/2" src={bgcircle} alt="" />
-                        <img className="block relative mx-auto w-96" src={rhino} alt="woman" />
+                <div className="mt-5">
+                    <div className="mx-auto relative">
+                        <img className="absolute opacity-20 w-[320px] sm:w-[450px] xs:w-[450px] md:w-[450px] top-50 left-1/2 -translate-x-1/2" src={bgcircle} alt="" />
+                        <img className="block relative w-64 sm:w-72 md:w-80 mx-auto" src={dog} alt="dog" />
                     </div>
-                    <div className="uppercase text-3xl font-bold tracking-wider text-center mt-9">
-                        thousands of happy members getting
-                        <span className="text-red-600"> fit</span>
-                        .
-                    </div>
+                    <motion.div
+                        className="flex flex-col gap-10 md:w-4/6 mx-auto mt-8"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
+                        variants={{
+                            hidden: { opacity: 0, x: -50 },
+                            visible: { opacity: 1, x: 0 }
+                        }}
+                    >
+                        <HText>
+                            thousands of happy members getting
+                            <span className="text-red-600"> fit</span>
+                            .
+                        </HText>
+                        <p className="md:text-xl sm:text-lg xs:text-base ">
+                            Thousands of satisfied members are achieving their fitness goals and transforming their lives at our gym. Our supportive community create an inspiring environment for individuals to reach new heights in their fitness journeys. Come and experience the difference for yourself!
+                        </p>
+                        <div>
+                            <ActionButton setSelectedPage={setSelectedPage}>Join Now</ActionButton>
+                        </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </section>
