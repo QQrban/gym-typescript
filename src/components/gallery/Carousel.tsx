@@ -8,11 +8,10 @@ import slide4 from "@/assets/slide4.jpg";
 import slide5 from "@/assets/slide5.jpg";
 import slide6 from "@/assets/slide6.jpg";
 
-type Props = {}
 
 const slides = [slide1, slide2, slide3, slide4, slide5, slide6];
 
-const Carousel = (props: Props) => {
+const Carousel = () => {
     const settings = {
         dots: true,
         infinite: true,
@@ -27,7 +26,7 @@ const Carousel = (props: Props) => {
         <Slider {...settings} className="mt-9 md:w-[650px] mx-auto z-10">
             {slides.map((slide, i) => (
                 <div key={i}>
-                    <img className="mx-auto" src={slide} alt="slide" />
+                    <img className="mx-auto w-full" src={slide} alt="slide" />
                 </div>
             ))}
         </Slider>
